@@ -18,6 +18,7 @@ import {
 import { useRecipes, useDeleteRecipe } from "@/lib/hooks/useRecipes";
 import { RecipeFilter as RecipeFilterType } from "@shared/schema";
 import { generateRecipePDF } from "@/lib/utils/pdf";
+import { useTranslation } from "react-i18next";
 
 export default function Recipes() {
   const [filter, setFilter] = useState<RecipeFilterType>({});
@@ -64,22 +65,24 @@ export default function Recipes() {
     }
   };
 
+  const { t } = useTranslation();
+  
   return (
     <div>
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-slab font-bold text-neutral-900">Recipes</h1>
+          <h1 className="text-2xl font-slab font-bold text-neutral-900">{t("recipes.title")}</h1>
           <p className="text-neutral-600 mt-1">
-            Manage and calculate costs for your culinary creations
+            {t("recipes.description", "Manage and calculate costs for your culinary creations")}
           </p>
         </div>
         <div className="mt-4 md:mt-0">
           <Button asChild className="bg-primary text-white hover:bg-primary/90">
             <Link href="/recipes/new">
-              <a className="flex items-center">
+              <div className="flex items-center">
                 <PlusCircle className="mr-2 h-4 w-4" />
-                New Recipe
-              </a>
+                {t("recipes.newRecipe")}
+              </div>
             </Link>
           </Button>
         </div>
@@ -120,15 +123,15 @@ export default function Recipes() {
           <div className="mb-4">
             <PlusCircle className="h-12 w-12 mx-auto text-neutral-300" />
           </div>
-          <h3 className="text-lg font-medium text-neutral-700 mb-2">No recipes found</h3>
+          <h3 className="text-lg font-medium text-neutral-700 mb-2">{t("recipes.noRecipesFound")}</h3>
           <p className="text-neutral-500 mb-6">
             {Object.keys(filter).length > 0
-              ? "Try changing your search criteria or clearing filters"
-              : "Get started by creating your first recipe"}
+              ? t("recipes.tryChangingCriteria", "Try changing your search criteria or clearing filters")
+              : t("recipes.getStarted", "Get started by creating your first recipe")}
           </p>
           <Button asChild className="bg-primary text-white hover:bg-primary/90">
             <Link href="/recipes/new">
-              <a>Create New Recipe</a>
+              <div>{t("recipes.createNewRecipe")}</div>
             </Link>
           </Button>
         </div>
@@ -149,15 +152,15 @@ export default function Recipes() {
       <AlertDialog open={deleteId !== null} onOpenChange={(open) => !open && setDeleteId(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogTitle>{t("recipes.deleteRecipeConfirmTitle", "Are you sure?")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the recipe and all its ingredients and steps.
+              {t("recipes.deleteRecipeConfirm", "This action cannot be undone. This will permanently delete the recipe and all its ingredients and steps.")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
             <AlertDialogAction onClick={confirmDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
-              Delete
+              {t("common.delete")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

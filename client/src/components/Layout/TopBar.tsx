@@ -118,9 +118,11 @@ export default function TopBar() {
               <span className="text-neutral-700">{pageTitle}</span>
             </div>
           )}
-          <h2 className="text-xl font-slab font-medium text-neutral-900">
-            {pageTitle}
-          </h2>
+          {!location.includes('/recipes') && (
+            <h2 className="text-xl font-slab font-medium text-neutral-900">
+              {pageTitle}
+            </h2>
+          )}
         </div>
       </div>
       
@@ -128,17 +130,17 @@ export default function TopBar() {
         <div className="hidden sm:block mr-4">
           <LanguageSelector />
         </div>
+        {/* Rimosso temporaneamente perché non funzionante
         <Button variant="ghost" size="icon" className="mr-2">
           <Search />
         </Button>
         <Button variant="ghost" size="icon" className="mr-2">
           <Bell />
         </Button>
-        {isMobile && (
-          <div className="w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-700 font-medium">
-            C
-          </div>
-        )}
+        */}
+        <div className="w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-700 font-medium">
+          {t("settings.userInitial", "U")}
+        </div>
       </div>
     </header>
   );
