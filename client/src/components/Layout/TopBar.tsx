@@ -16,6 +16,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "@/components/LanguageSelector";
 
 function getPageTitle(path: string): string {
   if (path === "/") return "Dashboard";
