@@ -52,10 +52,10 @@ export default function Dashboard() {
         <div className="mt-4 md:mt-0">
           <Button asChild className="bg-primary text-white hover:bg-primary/90">
             <Link href="/recipes/new">
-              <a className="flex items-center">
+              <div className="flex items-center">
                 <PlusCircle className="mr-2 h-4 w-4" />
                 New Recipe
-              </a>
+              </div>
             </Link>
           </Button>
         </div>
@@ -77,7 +77,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/recipes">
-              <a className="text-sm text-primary hover:underline">View all recipes</a>
+              <div className="text-sm text-primary hover:underline cursor-pointer">View all recipes</div>
             </Link>
           </CardFooter>
         </Card>
@@ -96,7 +96,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/recipes?category=main">
-              <a className="text-sm text-primary hover:underline">View main dishes</a>
+              <div className="text-sm text-primary hover:underline cursor-pointer">View main dishes</div>
             </Link>
           </CardFooter>
         </Card>
@@ -115,7 +115,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/recipes?category=cocktail">
-              <a className="text-sm text-primary hover:underline">View cocktails</a>
+              <div className="text-sm text-primary hover:underline cursor-pointer">View cocktails</div>
             </Link>
           </CardFooter>
         </Card>
@@ -134,7 +134,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/ingredients">
-              <a className="text-sm text-primary hover:underline">Manage ingredients</a>
+              <div className="text-sm text-primary hover:underline cursor-pointer">Manage ingredients</div>
             </Link>
           </CardFooter>
         </Card>
