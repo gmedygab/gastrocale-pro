@@ -5,10 +5,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useRecipes } from "@/lib/hooks/useRecipes";
 import { useIngredients } from "@/lib/hooks/useIngredients";
 import { formatCurrency } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
   const { data: recipes = [], isLoading: isLoadingRecipes } = useRecipes();
   const { data: ingredients = [], isLoading: isLoadingIngredients } = useIngredients();
+  const { t } = useTranslation();
 
   // Calculate dashboard stats
   const recipeCount = recipes.length;
@@ -44,9 +46,9 @@ export default function Dashboard() {
     <div>
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-slab font-bold text-neutral-900">Dashboard</h1>
+          <h1 className="text-2xl font-slab font-bold text-neutral-900">{t("dashboard.title")}</h1>
           <p className="text-neutral-600 mt-1">
-            Welcome to GastroCalc Pro. Manage your recipes and calculate food costs.
+            {t("dashboard.welcome")}
           </p>
         </div>
         <div className="mt-4 md:mt-0">
@@ -54,7 +56,7 @@ export default function Dashboard() {
             <Link href="/recipes/new">
               <div className="flex items-center">
                 <PlusCircle className="mr-2 h-4 w-4" />
-                New Recipe
+                {t("recipes.newRecipe")}
               </div>
             </Link>
           </Button>

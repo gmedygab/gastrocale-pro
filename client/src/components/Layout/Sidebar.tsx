@@ -8,16 +8,18 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar() {
   const [location] = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { href: "/", icon: Home, label: "Dashboard" },
-    { href: "/recipes", icon: SquareMenu, label: "Recipes" },
-    { href: "/ingredients", icon: Package2, label: "Ingredients" },
-    { href: "/reports", icon: BarChart3, label: "Reports" },
-    { href: "/settings", icon: Settings, label: "Settings" },
+    { href: "/", icon: Home, label: t("common.dashboard") },
+    { href: "/recipes", icon: SquareMenu, label: t("common.recipes") },
+    { href: "/ingredients", icon: Package2, label: t("common.ingredients") },
+    { href: "/reports", icon: BarChart3, label: t("common.reports") },
+    { href: "/settings", icon: Settings, label: t("common.settings") },
   ];
 
   return (

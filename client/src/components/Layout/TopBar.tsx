@@ -33,18 +33,33 @@ function getPageTitle(path: string): string {
   return "GastroCalc Pro";
 }
 
+function getPageTitleTranslation(path: string, t: any): string {
+  if (path === "/") return t("common.dashboard");
+  if (path.startsWith("/recipes")) {
+    if (path === "/recipes/new") return t("recipes.newRecipe");
+    if (path.includes("/edit")) return t("recipes.editRecipe");
+    if (path === "/recipes") return t("recipes.title");
+    return t("recipes.details");
+  }
+  if (path.startsWith("/ingredients")) return t("ingredients.title");
+  if (path.startsWith("/reports")) return t("reports.title");
+  if (path.startsWith("/settings")) return t("settings.title");
+  return "GastroCalc Pro";
+}
+
 export default function TopBar() {
   const isMobile = useIsMobile();
   const [location] = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pageTitle = getPageTitle(location);
+  const { t } = useTranslation();
+  const pageTitle = getPageTitleTranslation(location, t);
 
   const navItems = [
-    { href: "/", icon: Home, label: "Dashboard" },
-    { href: "/recipes", icon: SquareMenu, label: "Recipes" },
-    { href: "/ingredients", icon: Package2, label: "Ingredients" },
-    { href: "/reports", icon: BarChart3, label: "Reports" },
-    { href: "/settings", icon: Settings, label: "Settings" },
+    { href: "/", icon: Home, label: t("common.dashboard") },
+    { href: "/recipes", icon: SquareMenu, label: t("common.recipes") },
+    { href: "/ingredients", icon: Package2, label: t("common.ingredients") },
+    { href: "/reports", icon: BarChart3, label: t("common.reports") },
+    { href: "/settings", icon: Settings, label: t("common.settings") },
   ];
 
   return (
@@ -97,7 +112,7 @@ export default function TopBar() {
           {location !== "/" && !location.startsWith("/recipes/new") && !location.includes("/edit") && (
             <div className="hidden md:flex items-center text-sm text-neutral-500 mb-1">
               <Link href="/">
-                <div className="hover:text-primary cursor-pointer">Home</div>
+                <div className="hover:text-primary cursor-pointer">{t("common.dashboard")}</div>
               </Link>
               <ChevronRight size={14} className="mx-1" />
               <span className="text-neutral-700">{pageTitle}</span>
@@ -110,6 +125,9 @@ export default function TopBar() {
       </div>
       
       <div className="flex items-center">
+        <div className="hidden sm:block mr-4">
+          <LanguageSelector />
+        </div>
         <Button variant="ghost" size="icon" className="mr-2">
           <Search />
         </Button>
