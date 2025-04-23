@@ -32,8 +32,8 @@ export default function LanguageSelector() {
           <SelectValue placeholder={t("common.language")} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="en">{t("settings.english")}</SelectItem>
-          <SelectItem value="it">{t("settings.italian")}</SelectItem>
+          <SelectItem key="en" value="en">{t("settings.english")}</SelectItem>
+          <SelectItem key="it" value="it">{t("settings.italian")}</SelectItem>
         </SelectContent>
       </Select>
     </div>

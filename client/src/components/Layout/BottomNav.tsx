@@ -1,15 +1,17 @@
 import { useLocation, Link } from "wouter";
 import { Home, SquareMenu, Package2, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 export default function BottomNav() {
   const [location] = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { href: "/", icon: Home, label: "Dashboard" },
-    { href: "/recipes", icon: SquareMenu, label: "Recipes" },
-    { href: "/ingredients", icon: Package2, label: "Ingredients" },
-    { href: "/reports", icon: BarChart3, label: "Reports" },
+    { href: "/", icon: Home, label: t("common.dashboard") },
+    { href: "/recipes", icon: SquareMenu, label: t("common.recipes") },
+    { href: "/ingredients", icon: Package2, label: t("common.ingredients") },
+    { href: "/reports", icon: BarChart3, label: t("common.reports") },
   ];
 
   return (
@@ -21,7 +23,7 @@ export default function BottomNav() {
             
           return (
             <Link key={item.href} href={item.href}>
-              <a className="flex flex-col items-center py-2 px-4">
+              <div className="flex flex-col items-center py-2 px-4 cursor-pointer">
                 <item.icon 
                   size={20} 
                   className={cn(
@@ -37,7 +39,7 @@ export default function BottomNav() {
                 >
                   {item.label}
                 </span>
-              </a>
+              </div>
             </Link>
           );
         })}

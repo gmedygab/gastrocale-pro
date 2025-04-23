@@ -126,7 +126,8 @@
     "selectCurrency": "Select Currency",
     "euro": "Euro (€)",
     "usd": "US Dollar ($)",
-    "gbp": "British Pound (£)"
+    "gbp": "British Pound (£)",
+    "userInitial": "U"
   },
   "units": {
     "g": "g",
