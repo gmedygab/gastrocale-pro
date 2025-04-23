@@ -67,7 +67,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-lg font-medium text-neutral-700">Total Recipes</CardTitle>
+            <CardTitle className="text-lg font-medium text-neutral-700">{t("dashboard.totalRecipes")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -79,14 +79,14 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/recipes">
-              <div className="text-sm text-primary hover:underline cursor-pointer">View all recipes</div>
+              <div className="text-sm text-primary hover:underline cursor-pointer">{t("dashboard.viewAllRecipes")}</div>
             </Link>
           </CardFooter>
         </Card>
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-lg font-medium text-neutral-700">Main Dishes</CardTitle>
+            <CardTitle className="text-lg font-medium text-neutral-700">{t("dashboard.mainDishes")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -98,14 +98,14 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/recipes?category=main">
-              <div className="text-sm text-primary hover:underline cursor-pointer">View main dishes</div>
+              <div className="text-sm text-primary hover:underline cursor-pointer">{t("dashboard.viewMainDishes")}</div>
             </Link>
           </CardFooter>
         </Card>
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-lg font-medium text-neutral-700">Cocktails</CardTitle>
+            <CardTitle className="text-lg font-medium text-neutral-700">{t("dashboard.cocktails")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -117,14 +117,14 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/recipes?category=cocktail">
-              <div className="text-sm text-primary hover:underline cursor-pointer">View cocktails</div>
+              <div className="text-sm text-primary hover:underline cursor-pointer">{t("dashboard.viewCocktails")}</div>
             </Link>
           </CardFooter>
         </Card>
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-lg font-medium text-neutral-700">Ingredients</CardTitle>
+            <CardTitle className="text-lg font-medium text-neutral-700">{t("common.ingredients")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -136,7 +136,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter className="pt-0">
             <Link href="/ingredients">
-              <div className="text-sm text-primary hover:underline cursor-pointer">Manage ingredients</div>
+              <div className="text-sm text-primary hover:underline cursor-pointer">{t("dashboard.manageIngredients")}</div>
             </Link>
           </CardFooter>
         </Card>
@@ -146,12 +146,12 @@ export default function Dashboard() {
         {/* Most Profitable Recipes */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl">Most Profitable Recipes</CardTitle>
-            <CardDescription>Recipes with highest profit margins</CardDescription>
+            <CardTitle className="text-xl">{t("dashboard.mostProfitableRecipes")}</CardTitle>
+            <CardDescription>{t("dashboard.recipesHighestProfitMargins")}</CardDescription>
           </CardHeader>
           <CardContent>
             {isLoadingRecipes ? (
-              <div className="text-center py-4 text-neutral-500">Loading...</div>
+              <div className="text-center py-4 text-neutral-500">{t("common.loading")}</div>
             ) : profitableRecipes.length > 0 ? (
               <div className="space-y-4">
                 {profitableRecipes.map((recipe) => (
@@ -170,20 +170,20 @@ export default function Dashboard() {
                         {recipe.profitMargin ? Math.round(parseFloat(recipe.profitMargin as string)) : 0}%
                       </div>
                       <div className="text-sm text-neutral-500">
-                        {recipe.costPerServing ? formatCurrency(parseFloat(recipe.costPerServing as string)) : "—"}/serving
+                        {recipe.costPerServing ? formatCurrency(parseFloat(recipe.costPerServing as string)) : "—"}{t("dashboard.perServing")}
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-neutral-500">No profitable recipes yet</div>
+              <div className="text-center py-8 text-neutral-500">{t("dashboard.noProfitableRecipes")}</div>
             )}
           </CardContent>
           <CardFooter>
             <Button variant="outline" asChild className="w-full">
               <Link href="/recipes">
-                <div>View All Recipes</div>
+                <div>{t("dashboard.viewAllRecipes")}</div>
               </Link>
             </Button>
           </CardFooter>
@@ -192,12 +192,12 @@ export default function Dashboard() {
         {/* Recent Recipes */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl">Recently Added Recipes</CardTitle>
-            <CardDescription>Your latest creations</CardDescription>
+            <CardTitle className="text-xl">{t("dashboard.recentlyAddedRecipes")}</CardTitle>
+            <CardDescription>{t("dashboard.yourLatestCreations")}</CardDescription>
           </CardHeader>
           <CardContent>
             {isLoadingRecipes ? (
-              <div className="text-center py-4 text-neutral-500">Loading...</div>
+              <div className="text-center py-4 text-neutral-500">{t("common.loading")}</div>
             ) : latestRecipes.length > 0 ? (
               <div className="space-y-4">
                 {latestRecipes.map((recipe) => (
@@ -218,13 +218,13 @@ export default function Dashboard() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-neutral-500">No recipes yet</div>
+              <div className="text-center py-8 text-neutral-500">{t("dashboard.noRecipes")}</div>
             )}
           </CardContent>
           <CardFooter>
             <Button variant="outline" asChild className="w-full">
               <Link href="/recipes/new">
-                <div>Create New Recipe</div>
+                <div>{t("dashboard.createNewRecipe")}</div>
               </Link>
             </Button>
           </CardFooter>
