@@ -1,0 +1,112 @@
+Specifiche Tecniche Progetto App – "GastroCalc Pro" 
+1. Obiettivo Generale 
+Creare un’app multipiattaforma (Android/iOS/Web) che consenta: 
+• Inserimento e gestione ricette alimentari e cocktail 
+• Calcolo preciso del food cost e ricavo medio 
+• Generazione schede di produzione complete 
+• Gestione ingredienti e prodotti pronti 
+• Gestione porzioni, grammature, allergeni, attrezzature e preparazione 
+• Eventuale supporto a gestione magazzino 
+2. Funzionalità Dettagliate 
+2.1 Gestione Ricette 
+• Inserimento ricetta da zero (form con): 
+o Nome 
+o Categoria (piatto, cocktail, bevanda, dessert, ecc.) 
+o Numero porzioni 
+o Ingredienti (nome, quantità, unità di misura, costo unitario) 
+o Descrizione preparazione (passaggi numerati) 
+o Attrezzatura richiesta (opzionale) 
+o Tempo di preparazione e cottura 
+• Importazione automatica: 
+o Da URL di ricette (scraping da siti comuni: GialloZafferano, Cookist, ecc.) 
+o OCR o barcode per prodotti pronti (integrazione con librerie open source tipo 
+Tesseract per OCR e OpenFoodFacts/API barcode) 
+2.2 Calcolo Food Cost e Ricavo 
+• Calcolo automatico di: 
+o Costo totale ingredienti 
+o Costo per porzione 
+o Prezzo di vendita (inseribile) 
+o Ricavo netto e margine (%) 
+• Salvataggio dei dati per confronti e reportistica 
+• Supporto a cocktail: costo per cl/ml, bottiglia, drink 
+2.3 Schede di Produzione 
+• Creazione automatica PDF con: 
+o Titolo ricetta, porzioni, immagine 
+o Lista ingredienti con grammature 
+o Preparazione passo-passo 
+o Allergenici (spunta automatica) 
+o Costo e prezzo 
+• Visualizzazione in-app (modalità “Cucina”): 
+o Timer integrati 
+o Step interattivi 
+2.4 Gestione Ingredienti 
+• Database ingredienti personalizzabile: 
+o Nome, categoria, costo unitario (€/kg, €/litro, €/pz) 
+o Scadenza (opzionale) 
+o Fornitore (opzionale) 
+o Allergeni 
+• Funzione “duplicazione” ingredienti e ricette 
+2.5 Funzione Scorte (opzionale) 
+• Collegamento a magazzino interno: 
+o Quantità disponibile 
+o Calcolo automatico di quante porzioni puoi produrre 
+o Allarmi di basso stock 
+3. Stack Tecnologico Consigliato 
+Frontend 
+• Linguaggio: Flutter (Dart) → Cross-platform mobile e web 
+• Alternative: React Native se preferisci JS/TS 
+• UI responsive, design semplice in stile Material/Neumorphic 
+Backend 
+• Node.js con Express per API REST 
+• MongoDB per gestione flessibile dei dati (ingredienti, ricette, utenti) 
+• Firebase Authentication o Auth0 per login/registrazione sicura 
+OCR & Barcode 
+• OCR: Tesseract.js o plugin Flutter OCR 
+• Barcode: librerie tipo flutter_barcode_scanner o integrazione con OpenFoodFacts 
+4. Database Design (Esempio semplificato) 
+Collezione: Users 
+• ID 
+• Email, password 
+• Abbonamento 
+• Ricette create 
+Collezione: Recipes 
+• ID 
+• Titolo 
+• Porzioni 
+• Ingredienti (array: nome, quantità, unità, costo) 
+• Preparazione 
+• Categoria 
+• Prezzo di vendita 
+• Food cost 
+• Immagine 
+• Tags (es: vegetariano, senza glutine) 
+Collezione: Ingredients 
+• ID 
+• Nome 
+• Costo al kg/l 
+• Allergeni 
+• Fornitore 
+• Stock (opzionale) 
+5. Integrazioni 
+5.1 Esterni 
+• OpenFoodFacts API (barcode/ingredienti) 
+• Siti Ricette (scraping mirato – da valutare legalità e struttura) 
+5.2 Interni 
+• PDF Generator (es: pdf package per Flutter o jsPDF per Web) 
+• Local notifications per timer e scadenze 
+6. Monetizzazione e Scalabilità 
+• Versione Free: massimo 10 ricette, no PDF export 
+• Versione PRO: illimitato, PDF, magazzino, cloud backup 
+• Hosting: Firebase o server VPS con Mongo Atlas 
+7. Estensioni Future 
+• Report settimanali/mensili su costi 
+• Integrazione con stampanti cucina (per ristorazione) 
+• AI generativa per ricette da “ingredienti avanzati” 
+• Funzione menù giornaliero 
+8. Modalità di Consegna e Testing 
+• Figma per mockup UI 
+• Codice su GitHub o GitLab (con CI/CD) 
+• Testing: 
+o Unit Test (ricette, costi) 
+o UI Test (form, navigazione) 
+o Performance Test su data import/export 
