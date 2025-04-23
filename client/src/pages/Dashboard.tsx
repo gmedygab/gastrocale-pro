@@ -159,7 +159,7 @@ export default function Dashboard() {
                   >
                     <div>
                       <Link href={`/recipes/${recipe.id}`}>
-                        <a className="font-medium hover:text-primary">{recipe.name}</a>
+                        <div className="font-medium hover:text-primary cursor-pointer">{recipe.name}</div>
                       </Link>
                       <div className="text-sm text-neutral-500">{recipe.category}</div>
                     </div>
@@ -181,7 +181,7 @@ export default function Dashboard() {
           <CardFooter>
             <Button variant="outline" asChild className="w-full">
               <Link href="/recipes">
-                <a>View All Recipes</a>
+                <div>View All Recipes</div>
               </Link>
             </Button>
           </CardFooter>
@@ -205,7 +205,7 @@ export default function Dashboard() {
                   >
                     <div>
                       <Link href={`/recipes/${recipe.id}`}>
-                        <a className="font-medium hover:text-primary">{recipe.name}</a>
+                        <div className="font-medium hover:text-primary cursor-pointer">{recipe.name}</div>
                       </Link>
                       <div className="text-sm text-neutral-500">{recipe.category}</div>
                     </div>
@@ -222,7 +222,7 @@ export default function Dashboard() {
           <CardFooter>
             <Button variant="outline" asChild className="w-full">
               <Link href="/recipes/new">
-                <a>Create New Recipe</a>
+                <div>Create New Recipe</div>
               </Link>
             </Button>
           </CardFooter>
