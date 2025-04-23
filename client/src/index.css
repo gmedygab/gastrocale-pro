@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 97%;
+  --foreground: 240 10% 4%;
+  --muted: 60 5% 96%;
+  --muted-foreground: 25 5% 45%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
+  --border: 240 5% 90%;
+  --input: 240 5% 90%;
+  --primary: 142 76% 35%;
+  --primary-foreground: 142 5% 99%;
+  --secondary: 36 100% 50%;
+  --secondary-foreground: 36 10% 10%;
+  --accent: 20 100% 50%;
+  --accent-foreground: 20 5% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --success: 142 76% 35%;
+  --info: 217 91% 60%;
+  --warning: 36 100% 50%;
+  --error: 0 84% 60%;
+  --ring: 142 76% 35%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --popover: 240 10% 4%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 4%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+  --primary: 142 76% 35%;
+  --primary-foreground: 142 5% 99%;
+  --secondary: 36 100% 50%;
+  --secondary-foreground: 36 10% 10%;
+  --accent: 20 100% 50%;
+  --accent-foreground: 20 5% 10%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --success: 142 76% 35%;
+  --info: 217 91% 60%;
+  --warning: 36 100% 50%;
+  --error: 0 84% 60%;
+  --ring: 142 76% 35%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-slab font-medium;
+  }
+}
+
+@layer components {
+  .recipe-card {
+    @apply transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-md;
+  }
+
+  .recipe-step:hover,
+  .recipe-ingredient:hover {
+    @apply bg-primary/5;
+  }
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 500;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+}
