@@ -71,7 +71,7 @@ export default function TopBar() {
                     return (
                       <li key={item.href} className="mb-1">
                         <Link href={item.href}>
-                          <a 
+                          <div 
                             className={cn(
                               "flex items-center px-4 py-3 text-neutral-900 hover:bg-primary/10 hover:text-primary",
                               isActive && "bg-primary/10 text-primary"
@@ -80,7 +80,7 @@ export default function TopBar() {
                           >
                             <item.icon className="mr-3" size={20} />
                             {item.label}
-                          </a>
+                          </div>
                         </Link>
                       </li>
                     );
@@ -95,7 +95,7 @@ export default function TopBar() {
           {location !== "/" && !location.startsWith("/recipes/new") && !location.includes("/edit") && (
             <div className="hidden md:flex items-center text-sm text-neutral-500 mb-1">
               <Link href="/">
-                <a className="hover:text-primary">Home</a>
+                <div className="hover:text-primary cursor-pointer">Home</div>
               </Link>
               <ChevronRight size={14} className="mx-1" />
               <span className="text-neutral-700">{pageTitle}</span>

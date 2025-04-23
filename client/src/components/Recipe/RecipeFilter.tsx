@@ -34,9 +34,9 @@ export default function RecipeFilter({ onFilterChange }: RecipeFilterProps) {
     const filter: RecipeFilterType = {};
     
     if (search) filter.search = search;
-    if (category) filter.category = category;
-    if (subcategory) filter.subcategory = subcategory;
-    if (sortBy) filter.sortBy = sortBy as any;
+    if (category && category !== "all_categories") filter.category = category;
+    if (subcategory && subcategory !== "all_types") filter.subcategory = subcategory;
+    if (sortBy && sortBy !== "default_sort") filter.sortBy = sortBy as any;
     
     onFilterChange(filter);
   }, [search, category, subcategory, sortBy, onFilterChange]);
@@ -70,7 +70,7 @@ export default function RecipeFilter({ onFilterChange }: RecipeFilterProps) {
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Categories</SelectItem>
+              <SelectItem value="all_categories">All Categories</SelectItem>
               {categoryOptions.map((cat) => (
                 <SelectItem key={cat} value={cat}>{formatOption(cat)}</SelectItem>
               ))}
@@ -82,7 +82,7 @@ export default function RecipeFilter({ onFilterChange }: RecipeFilterProps) {
               <SelectValue placeholder="All Types" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Types</SelectItem>
+              <SelectItem value="all_types">All Types</SelectItem>
               {subcategoryOptions.map((subcat) => (
                 <SelectItem key={subcat} value={subcat}>{formatOption(subcat)}</SelectItem>
               ))}
@@ -94,7 +94,7 @@ export default function RecipeFilter({ onFilterChange }: RecipeFilterProps) {
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">Sort By</SelectItem>
+              <SelectItem value="default_sort">Sort By</SelectItem>
               <SelectItem value="name">Name</SelectItem>
               <SelectItem value="cost_low">Cost: Low-High</SelectItem>
               <SelectItem value="cost_high">Cost: High-Low</SelectItem>

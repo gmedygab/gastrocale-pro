@@ -37,7 +37,7 @@ export default function Sidebar() {
             return (
               <li key={item.href} className="mb-1">
                 <Link href={item.href}>
-                  <a 
+                  <div 
                     className={cn(
                       "flex items-center px-4 py-3 text-neutral-900 hover:bg-primary/10 hover:text-primary rounded-r-full",
                       isActive && "bg-primary/10 text-primary"
@@ -45,7 +45,7 @@ export default function Sidebar() {
                   >
                     <item.icon className="mr-3" size={20} />
                     {item.label}
-                  </a>
+                  </div>
                 </Link>
               </li>
             );
